@@ -1,5 +1,98 @@
 @import "variables.scss";
 @import "mixins.scss";
+
+$theme-primary:    #fed136;
+$theme-danger:     #e74c3c;
+
+$gray-base:			#000 !default;
+$gray-darker:		lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:			lighten($gray-base, 20%) !default;   // #333
+$gray:				lighten($gray-base, 33.5%) !default; // #555
+$gray-light:		lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:		lighten($gray-base, 93.5%) !default; // #eee
+
+
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 25%);
+  }
+  &:hover {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Background Cover Mixin
+
+@mixin background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+// Font Mixins
+
+@mixin serif-font {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@mixin script-font {
+  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+@mixin body-font {
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@mixin heading-font {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
 // Global Components
 body {
   overflow-x: hidden;
@@ -175,7 +268,7 @@ h6 {
 }
 
 header {
-  background-image: url('../img/header-bg.jpg');
+  background-image: image-url('header-bg.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
